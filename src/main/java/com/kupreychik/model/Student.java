@@ -5,16 +5,13 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
 
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Student {
+public class Student extends AbstractModel {
     private Long id;
     private String name;
     private String surname;
-    private LocalDateTime birthDate;
-    private String phone;
 }

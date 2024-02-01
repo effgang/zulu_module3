@@ -1,19 +1,19 @@
 package com.kupreychik.repository;
 
-import com.kupreychik.dto.request.StudentRequest;
 import com.kupreychik.exception.ModelNotFound;
-import com.kupreychik.mapper.StudentMapper;
 import com.kupreychik.model.Student;
 
+import java.nio.file.Files;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class StudentRepository {
 
-    private final StudentMapper studentMapper;
     private final CopyOnWriteArrayList<Student> students = new CopyOnWriteArrayList<>();
 
-    public StudentRepository(StudentMapper studentMapper) {
-        this.studentMapper = studentMapper;
+    public List<Student> getAllStudents() {
+        return new ArrayList<>(students);
     }
 
     public Student getStudentByName(String name) throws ModelNotFound {
@@ -30,8 +30,8 @@ public class StudentRepository {
                 .orElseThrow(() -> new ModelNotFound());
     }
 
-    public Student addStudent(StudentRequest studentRequest) {
-        Student student = studentMapper.mapToModel(studentRequest);
+    public Student save(Student student) {
+        student.setId((long) (students.size() + 1));
         students.add(student);
         return student;
     }

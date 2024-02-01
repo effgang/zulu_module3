@@ -5,13 +5,14 @@ import com.kupreychik.dto.response.StudentResponse;
 import com.kupreychik.model.Student;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.factory.Mappers;
 
 @Mapper
 public interface StudentMapper {
 
-    @Mapping(target = "phone", source = "phoneNumber")
+    StudentMapper INSTANCE = Mappers.getMapper(StudentMapper.class);
+
     Student mapToModel(StudentRequest dto);
 
-    @Mapping(target = "groupId", expression = "java(groupId)")
-    StudentResponse mapToResponse(Student student, Long groupId);
+    StudentResponse mapToResponse(Student student);
 }

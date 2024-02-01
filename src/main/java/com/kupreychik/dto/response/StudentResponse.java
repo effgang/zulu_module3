@@ -12,9 +12,9 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class StudentResponse {
+    private Long id;
     private String name;
     private String surname;
-    private LocalDateTime birthDate;
-    private String phoneNumber;
+    private String birthDate;
     private Long groupId;
 }

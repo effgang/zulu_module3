@@ -1,9 +1,15 @@
 package com.kupreychik.service;
 
+import com.kupreychik.dto.request.StudentRequest;
 import com.kupreychik.dto.response.StudentResponse;
-import com.kupreychik.model.Student;
+
+import java.util.List;
 
 public interface StudentService {
 
     StudentResponse getStudent(Long id);
+
+    List<StudentResponse> getStudents();
+
+    String save(StudentRequest studentRequest);
 }
